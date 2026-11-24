@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="生活常用知识、清单和在线计算工具">
+  <title>生活工具箱</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./tools.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="./">生活工具箱</a>
+      <nav aria-label="站内导航"><a href="#tools">在线工具</a><a href="#guides">生活知识</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <h1 id="title">日常小事，<br>随手查算。</h1>
+      <p>换算单位、比较价格、平分账单。出门和整理文件前，也可以翻翻生活清单。</p>
+      <a class="button" href="#tools">打开工具</a>
+    </section>
+    <section id="tools" aria-labelledby="tools-title">
+      <h2 id="tools-title">在线工具</h2>
+      <div class="grid">
+        <form class="card" id="convert">
+          <h3>单位换算</h3>
+          <label>换算方向<select name="unit">
+            <option value="km-mi">公里 → 英里</option>
+            <option value="mi-km">英里 → 公里</option>
+            <option value="kg-lb">千克 → 磅</option>
+            <option value="lb-kg">磅 → 千克</option>
+            <option value="c-f">摄氏度 → 华氏度</option>
+            <option value="f-c">华氏度 → 摄氏度</option>
+          </select></label>
+          <label>数值<input name="amount" type="number" step="any" required></label>
+          <button>换算</button>
+          <output aria-live="polite"></output>
+        </form>
+        <form class="card" id="price">
+          <h3>商品单价</h3>
+          <label>总价<input name="amount" type="number" step="0.01" min="0" required></label>
+          <label>总重量（克）<input name="grams" type="number" step="any" min="0" required></label>
+          <button>算每千克价格</button>
+          <output aria-live="polite"></output>
+        </form>
+        <form class="card" id="split">
+          <h3>账单平分</h3>
+          <label>账单金额<input name="amount" type="number" step="0.01" min="0" max="999999999" required></label>
+          <label>人数<input name="people" type="number" min="1" step="1" max="999999" required></label>
+          <button>算每人金额</button>
+          <output aria-live="polite"></output>
+        </form>
+      </div>
+    </section>
+    <section id="guides" aria-labelledby="guides-title">
+      <h2 id="guides-title">生活知识</h2>
+      <details><summary>购物比价</summary><ul>
+        <li>先统一比较单位。不同规格的同类商品可以按每千克或每升的价格比较。</li>
+        <li>计算实际到手价时，把优惠、运费和必须购买的数量算进去。</li>
+        <li>按实际用量选规格。大包装用不完时，单价低也可能多花钱。</li>
+      </ul></details>
+      <details><summary>出门前清单</summary><ul>
+        <li>核对证件、钥匙、手机、支付方式和充电器。</li>
+        <li>提前保存车次、地址和预约信息，方便离线查看。</li>
+        <li>关好门窗，检查水龙头和灶具。长时间离家时，提前安排宠物和植物的照看。</li>
+      </ul></details>
+      <details><summary>文件整理与备份</summary><ul>
+        <li>给重要文件加上日期和简短名称，例如「2026-11-23_租房合同.pdf」。</li>
+        <li>保留原件与独立备份，定期试着从备份恢复一份文件。</li>
+        <li>分享前核对接收人、链接权限和文件中包含的私人信息。</li>
+      </ul></details>
+    </section>
+  </main>
+  <footer class="wrap"><p>计算在浏览器内完成。</p><a href="https://github.com/ChengRui24/everyday-toolkit">查看源码</a></footer>
+</body>
+</html>
