@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>柠檬酸除垢 · 生活工具箱</title>
+<link rel="stylesheet" href="../../theme.css">
+<link rel="stylesheet" href="guide.css">
+<script src="calculator.js" defer></script>
+</head>
+<body>
+<header><div class="frame bar"><nav aria-label="页面层级" class="crumb"><a href="../../index.html">生活工具箱</a><span aria-hidden="true">/</span><b aria-current="page">柠檬酸除垢</b></nav><nav aria-label="页内导航"><a href="#calculator">配比计算</a><a href="#devices">设备图鉴</a><a href="#scope">范围对比</a><a href="#levels">浓度对照</a><a href="#recipes">设备配方</a><a href="#materials">材质</a></nav></div></header>
+<main class="frame">
+<div class="intro"><h1>柠檬酸除垢</h1><p>查设备的除垢要求，再按手边的水量换算所需的原料用量。</p></div>
+<aside><b>使用前</b><span>工业级粉末请勿用于热水壶、饮水管路等饮水接触部件。选择该型号认可的除垢产品。柠檬酸切勿与 84 消毒液等含氯漂白剂混用。</span></aside>
+<details class="contents"><summary>本页目录</summary><nav aria-label="专题目录"><a href="#ranges">浓度范围图</a><a href="#calculator">配比计算器</a><a href="#devices">设备图鉴与厂家说明</a><a href="#scope">处理范围</a><a href="#dirt">污垢效果</a><a href="#levels">九档浓度</a><a href="#recipes">设备配方总表</a><a href="#methods">操作方法与洗衣机水量表</a><a href="#materials">材质耐受性</a><a href="#reaction">反应原理</a><a href="#temperature">温度</a><a href="#mixing">混用注意事项</a><a href="#common">家庭常备配方</a></nav></details>
+<section id="ranges"><h2>家庭除垢浓度使用范围</h2>
+<div class="bands"><div class="band"><strong>0.5～1%</strong><div><div class="track"><i style="width:5%;background:#64970e"></i></div>轻微水垢、日常维护</div></div><div class="band"><strong>1～3%</strong><div><div class="track"><i style="width:15%;background:#269251"></i></div>常规除垢、兼容设备</div></div><div class="band"><strong>3～5%</strong><div><div class="track"><i style="width:25%;background:#148c83"></i></div>明显水垢、耐酸材质</div></div><div class="band"><strong>5～10%</strong><div><div class="track"><i style="width:50%;background:#cd7909"></i></div>顽固水垢、耐酸零件</div></div><div class="band"><strong>10～15%</strong><div><div class="track"><i style="width:75%;background:#dc6217"></i></div>特殊局部重垢处理</div></div><div class="band"><strong>15～20%</strong><div><div class="track"><i style="width:100%;background:#cb3434"></i></div>不建议家庭常规使用</div></div></div><p class="note">条长表示各档浓度上限，满刻度为 20%。分档用于比较，选用时须核对材料和设备说明。</p>
+</section>
+<section id="calculator" class="mix"><h2>柠檬酸溶液配比计算器</h2><div class="inputs">
+<fieldset><legend>原料剂型</legend><div class="choices">
+<label><input type="radio" name="form" value="solid" checked> 固体粉末</label>
+<label><input type="radio" name="form" value="liquid"> 柠檬酸溶液</label></div></fieldset>
+<fieldset id="solid-type"><legend>柠檬酸类型</legend><div class="choices"><label><input type="radio" name="type" value="mono" checked> 一水柠檬酸</label><label><input type="radio" name="type" value="anh" > 无水柠檬酸</label></div></fieldset>
+<fieldset id="stock-fields" hidden><legend>瓶中原液的浓度</legend>
+<label for="stock-unit">瓶身标签怎么写？</label>
+<select id="stock-unit">
+<option value="ww">质量分数 · % w/w 或 g/100 g</option>
+<option value="wv">质量体积百分比 · % w/v 或 g/100 mL</option>
+<option value="gl">质量浓度 · g/L</option></select>
+<p id="stock-help" class="note"></p>
+<label id="strength-label" for="strength">原液质量分数（%）</label>
+<input id="strength" type="number" min="0" step="any" aria-describedby="stock-help">
+<div id="stock-presets" class="presets" aria-label="原液质量分数快捷选择">
+<button type="button" data-strength="10">10%</button><button type="button" data-strength="20">20%</button><button type="button" data-strength="30">30%</button><button type="button" data-strength="50">50%</button></div>
+<label for="density" id="density-label">原液密度（g/mL，可选）</label><input id="density" type="number" min="0" step="any" placeholder="按产品标签或资料填写">
+<details><summary>标签按一水物计？调整含量口径</summary>
+<label for="stock-basis">标签所用的柠檬酸形式</label>
+<select id="stock-basis"><option value="anh">以无水柠檬酸计（默认）</option><option value="mono">以一水柠檬酸计</option></select>
+</details></fieldset>
+<div class="pair"><div><label for="water">准备加入的清水量</label><input id="water" type="number" step="any" value="100"></div>
+<fieldset><legend>水量单位</legend><div class="choices"><label><input type="radio" name="unit" value="ml" checked> mL</label><label><input type="radio" name="unit" value="g" > g</label><label><input type="radio" name="unit" value="l" > L</label></div></fieldset></div>
+<div id="solid-content"><label for="purity">原料纯度（%）</label><input id="purity" type="number" step="any" value="99"></div>
+<label for="mode">计算方式</label><select id="mode"><option value="effective">目标有效酸浓度（以无水物计）</option><option value="material">目标质量分数（按所选原料计）</option><option value="dose">按说明书每 100 mL 水的投粉量</option></select>
+<div class="target"><label for="target" id="target-label">目标有效酸浓度（%）</label><input id="target" type="number" step="any" value="3"></div>
+<div id="range-controls"><input type="range" min="0.5" max="20" step="0.1" value="3" id="slider" aria-label="调节目标浓度"><div class="ticks"><span>0.5%</span><span>5%</span><span>10%</span><span>15%</span><span>20%</span></div>
+<div class="presets"><button data-preset="1" type="button">1%</button><button data-preset="2" type="button">2%</button><button data-preset="3" type="button">3%</button><button data-preset="5" type="button">5%</button><button data-preset="10" type="button">10%</button></div></div></div>
+<div class="answer" aria-live="polite"><p id="quantity-label">需要添加的柠檬酸固体</p><output id="result">—</output><p id="volume" hidden></p>
+<div class="pair"><div>溶液总质量<br><b id="total">—</b></div><div>有效无水柠檬酸质量<br><b id="acid">—</b></div></div>
+<p id="ratio"></p></div></section><section id="devices"><h2>设备示意图速查</h2><p class="lead">图中加粗线条标出要查的部位。选择设备，查看对应的用量和操作说明。</p><div class="atlas"><a href="#kettle" class="device"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M19 28H52L58 66Q40 71 17 66L21 41L11 30L19 33ZM53 32Q77 26 66 50L56 54M23 25H46M29 22H40"/><path class="part" d="M22 61Q37 65 53 61"/></svg><strong>热水壶</strong><small>壶底与内壁</small></a><a href="#shower" class="device"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M15 64L34 43Q28 32 40 24Q54 16 65 29L68 34L44 50L39 47L22 69Z"/><path class="part" d="M43 45L64 31M52 52L55 56M60 47L63 51M67 42L70 46"/></svg><strong>花洒</strong><small>喷孔面板</small></a><a href="#tap" class="device"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M12 23H43Q62 23 62 41V49H46V42Q46 38 40 38H12ZM47 51H61V61H47Z"/><path class="part" d="M48 56H60M50 65V70M57 65V70"/></svg><strong>龙头起泡器</strong><small>可拆滤网</small></a><a href="#dispenser" class="device"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M16 18H57Q65 18 65 26V38H48V59H65V67H16ZM48 38H55V43H48ZM20 22H34V42H20Z"/><path class="part" d="M27 44V55H41V30H52V35"/></svg><strong>即热饮水器</strong><small>内部水路</small></a><a href="#topload" class="device"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M15 31L24 18H62L67 31V68H15ZM16 31H66M24 25H57M20 35H27"/><path class="part" d="M23 41V52Q41 69 59 52V41M30 54Q41 49 52 54M35 56L41 52L47 56"/></svg><strong>波轮洗衣机</strong><small>桶底波轮</small></a><a href="#frontload" class="device"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M16 16H65V69H16ZM16 29H65M20 21H32M54 22H59M58 47A17 17 0 1 1 24 47A17 17 0 1 1 58 47"/><path class="part" d="M53 47A12 12 0 1 1 29 47A12 12 0 1 1 53 47"/></svg><strong>滚筒洗衣机</strong><small>内筒与门封</small></a><a href="#coffee" class="device"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M17 19H58L63 35H37V59H62V66H17ZM42 44H56V50Q56 56 49 56Q42 56 42 50ZM57 45Q66 44 60 51H56"/><path class="part" d="M24 50V28H48V34M48 37V40"/></svg><strong>咖啡机</strong><small>加热与冲煮水路</small></a></div><h3>厂家说明与型号示例</h3><p class="lead">先核对品牌、型号和清洁剂标签。只有厂家给出明确克重时，才按比例换算。</p>
+<div class="scroll"><table><thead><tr><th>设备</th><th>每 100 mL 水（约 100 g）</th><th>使用要点</th></tr></thead><tbody>
+<tr id="kettle"><th>热水壶</th><td>按本机说明书</td><td>部分机型要求先烧水、断电，再加入除垢液。按指定水位操作，完成清水冲洗。<a href="https://www.documents.philips.com/assets/20210831/b547e8ca199b48d1960bad950032bbab.pdf">飞利浦水壶说明书</a></td></tr>
+<tr id="dispenser"><th>即热饮水器</th><td><strong>5 g</strong> · 限所列机型<br><button type="button" data-dose="5">代入计算器</button></td><td>飞利浦 ADD5910M/90 指定每 20 mL 水加 1 g 柠檬酸。按说明移除滤芯，运行除垢和冲洗程序。<a href="https://www.philips.com.sg/c-f/XC000020580/when-and-how-should-i-descale-my-philips-instant-heating-water-dispenser">型号与操作步骤</a></td></tr>
+<tr id="shower"><th>花洒</th><td>按清洁剂标签稀释</td><td>汉斯格雅建议使用温和的柠檬酸基清洁剂。仅处理允许接触清洁剂的部位，随后用清水冲净。<a href="https://assets.hansgrohe.com/celum/web/DIY_Toolkit_1_Cleaning_Your_Hansgrohe_Product.pdf">汉斯格雅护理指南</a></td></tr>
+<tr id="tap"><th>龙头起泡器</th><td>按清洁剂标签稀释</td><td>先确认滤网能否拆卸及其材质。依照产品说明处理滤网上的水垢，冲净后装回。<a href="https://assets.hansgrohe.com/celum/web/DIY_Toolkit_1_Cleaning_Your_Hansgrohe_Product.pdf">起泡器护理图解</a></td></tr>
+<tr id="topload"><th>波轮洗衣机</th><td>查本机认可的除垢剂</td><td>桶型不足以确定投粉量。博世提示家用柠檬酸可能损伤橡胶件；其他型号按本机手册选择产品、剂量和程序。<a href="https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-washing-machine-citric-acid-to-clean-washing-machine">博世护理说明</a></td></tr>
+<tr id="frontload"><th>滚筒洗衣机</th><td>按型号选用专用剂</td><td>先区分内筒除垢和门封清洁。博世提醒酸性家用清洁剂会损伤橡胶件。<a href="https://www.bosch-home.com/us/owner-support/get-support/support-selfhelp-washing-machine-citric-acid-to-clean-washing-machine">博世材料说明</a></td></tr>
+<tr id="coffee"><th>咖啡机</th><td>按指定套装用量</td><td>Nespresso 要求使用配套除垢剂，并完成对应机型的清洗和漂洗程序。<a href="https://www.nespresso.com/ch/en/service-faq">Nespresso 机型指南</a></td></tr>
+</tbody></table></div></section>
+<section id="scope"><h2>除垢范围对比</h2>
+<table><thead><tr><th>处理范围</th><th>接触位置</th><th>操作边界</th></tr></thead><tbody>
+<tr><th>可见表面</th><td>壶底、内壁</td><td>按水位覆盖结垢处，避开电器底座与接口。</td></tr>
+<tr><th>局部零件</th><td>喷孔、可拆滤网</td><td>按材质与镀层要求处理，控制接触时间，冲净残液。</td></tr>
+<tr><th>内部管路</th><td>饮水器、咖啡机水路</td><td>使用型号指定的产品和程序，让清水走完同一条水路。</td></tr>
+<tr><th>整机除垢</th><td>波轮或滚筒洗衣机</td><td>投放量取自本机与专用剂说明。额定洗涤容量是衣物重量，不能代入计算器当作水量。</td></tr>
+</tbody></table></section>
+<section id="dirt"><h2>不同污垢的清洁效果</h2>
+<div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">污垢类型</th><th scope="col">柠檬酸的作用</th></tr></thead><tbody>
+<tr><th scope="row">碳酸钙水垢</th><td>很好</td></tr>
+<tr><th scope="row">碳酸镁水垢</th><td>很好</td></tr>
+<tr><th scope="row">部分尿垢</th><td>较好</td></tr>
+<tr><th scope="row">部分铁锈、铁氧化物</th><td>有一定效果</td></tr>
+<tr><th scope="row">矿物质沉积</th><td>视成分而定</td></tr>
+<tr><th scope="row">钙镁皂垢</th><td>部分有效，可能需要表面活性剂配合</td></tr>
+<tr><th scope="row">硫酸钙水垢</th><td>有限</td></tr>
+<tr><th scope="row">二氧化硅水垢</th><td>较差</td></tr>
+<tr><th scope="row">油脂、油烟</th><td>较差</td></tr>
+<tr><th scope="row">洗衣机皮脂污垢</th><td>较差</td></tr>
+<tr><th scope="row">霉菌</th><td>不能可靠清除或杀灭</td></tr>
+<tr><th scope="row">细菌生物膜</th><td>不能可靠消毒</td></tr>
+<tr><th scope="row">洗涤剂有机残留</th><td>有限</td></tr></tbody></table></div>
+<p>洗衣机内的矿物水垢、油性残留和卫生消毒需要分别处理。</p>
+</section>
+<section id="levels"><h2>浓度等级与称量对照</h2>
+<div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">原料参数</th><th scope="col">一水柠檬酸</th><th scope="col">无水柠檬酸</th></tr></thead><tbody>
+<tr><th scope="row">化学式</th><td>C₆H₈O₇·H₂O</td><td>C₆H₈O₇</td></tr>
+<tr><th scope="row">摩尔质量</th><td>210.14 g/mol</td><td>192.12 g/mol</td></tr>
+<tr><th scope="row">结晶水含量</th><td>约 8.57%</td><td>0%</td></tr>
+<tr><th scope="row">纯品的无水酸当量</th><td>91.43%</td><td>100%</td></tr></tbody></table></div>
+<p>以下各表按纯度 99% 的一水物计算。100 g 粉末约含 90.51 g 无水酸当量，替代纯无水酸时用量约乘 1.105。表格将 100 g 水和约 100 mL 水合并，计算器按室温水 0.998 g/mL 精算。纯度请使用所选原料的实际质量分数。</p><div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">浓度等级</th><th scope="col">有效酸浓度</th><th scope="col">每 100 g 水（约 100 mL）加粉</th><th scope="col">每约 1 L 水加粉¹</th></tr></thead><tbody>
+<tr><th scope="row">极低</th><td><button type="button" data-percent="0.5">0.5%</button></td><td>0.56 g</td><td>5.6 g</td></tr>
+<tr><th scope="row">低</th><td><button type="button" data-percent="1">1%</button></td><td>1.12 g</td><td>11.2 g</td></tr>
+<tr><th scope="row">温和</th><td><button type="button" data-percent="2">2%</button></td><td>2.26 g</td><td>22.6 g</td></tr>
+<tr><th scope="row">常规</th><td><button type="button" data-percent="3">3%</button></td><td>3.43 g</td><td>34.3 g</td></tr>
+<tr><th scope="row">中等</th><td><button type="button" data-percent="5">5%</button></td><td>5.85 g</td><td>58.5 g</td></tr>
+<tr><th scope="row">中高</th><td><button type="button" data-percent="8">8%</button></td><td>9.70 g</td><td>97.0 g</td></tr>
+<tr><th scope="row">高</th><td><button type="button" data-percent="10">10%</button></td><td>12.42 g</td><td>124.2 g</td></tr>
+<tr><th scope="row">超高</th><td><button type="button" data-percent="15">15%</button></td><td>19.86 g</td><td>198.6 g</td></tr>
+<tr><th scope="row">极高</th><td><button type="button" data-percent="20">20%</button></td><td>28.36 g</td><td>283.6 g</td></tr></tbody></table></div>
+<p>¹ 表中每升按 1,000 g 水估算。点击浓度即可用 99% 一水物试算。</p><details><summary>计算公式与浓度口径</summary><p>以无水物计时，有效酸分数 A = 原料纯度 × 无水酸当量。水重为 W，目标质量分数为 C（均以小数代入），所需粉重 m = W × C ÷ (A − C)。例如 100 g 水加 5 g 纯度 99% 的一水物，有效酸质量分数约为 4.31%。</p></details>
+</section>
+<section id="recipes"><h2>家庭设备清洁配方总表</h2>
+<p>以下为原会话的参考范围。仅在型号及材质允许时采用，设备厂家给出的产品、剂量、温度和时间优先。带 * 的内部程序须经厂家明确允许；所有饮水、食品接触部件须使用适用原料。</p><div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">清洁对象</th><th scope="col">有效酸浓度</th><th scope="col">约每 100 mL 水加粉</th><th scope="col">水温</th><th scope="col">接触时间</th></tr></thead><tbody>
+<tr><th scope="row">热水壶轻度水垢</th><td>1～2%</td><td>1.1～2.3g</td><td>40～60℃</td><td>15～30分钟</td></tr>
+<tr><th scope="row">热水壶严重水垢</th><td>3～5%</td><td>3.4～5.8g</td><td>40～60℃</td><td>20～30分钟</td></tr>
+<tr><th scope="row">即热饮水器管路*</th><td>1～2%</td><td>1.1～2.3g</td><td>常温</td><td>按说明书</td></tr>
+<tr><th scope="row">咖啡机管路*</th><td>1～3%</td><td>1.1～3.4g</td><td>按说明书</td><td>按说明书</td></tr>
+<tr><th scope="row">花洒喷头</th><td>1～3%</td><td>1.1～3.4g</td><td>20～40℃</td><td>5～20分钟</td></tr>
+<tr><th scope="row">水龙头表面</th><td>0.5～1%</td><td>0.6～1.1g</td><td>常温</td><td>1～5分钟</td></tr>
+<tr><th scope="row">可拆卸耐酸起泡器</th><td>3～5%</td><td>3.4～5.8g</td><td>20～40℃</td><td>15～30分钟</td></tr>
+<tr><th scope="row">淋浴房普通玻璃</th><td>2～5%</td><td>2.3～5.8g</td><td>常温</td><td>5～15分钟</td></tr>
+<tr><th scope="row">普通釉面瓷砖</th><td>2～5%</td><td>2.3～5.8g</td><td>常温</td><td>5～15分钟</td></tr>
+<tr><th scope="row">不锈钢水槽</th><td>1～3%</td><td>1.1～3.4g</td><td>常温</td><td>5～15分钟</td></tr>
+<tr><th scope="row">加湿器水箱</th><td>1～3%</td><td>1.1～3.4g</td><td>常温</td><td>15～30分钟</td></tr>
+<tr><th scope="row">蒸锅、蒸蛋器</th><td>1～3%</td><td>1.1～3.4g</td><td>40～60℃</td><td>15～30分钟</td></tr>
+<tr><th scope="row">马桶釉面顽固水垢</th><td>5～10%</td><td>5.8～12.4g</td><td>常温</td><td>20～60分钟</td></tr>
+<tr><th scope="row">塑料水垢容器</th><td>2～5%</td><td>2.3～5.8g</td><td>20～40℃</td><td>15～30分钟</td></tr>
+<tr><th scope="row">波轮洗衣机*</th><td>0.2～0.5%</td><td>0.22～0.56g</td><td>20～40℃</td><td>清洁程序</td></tr>
+<tr><th scope="row">滚筒洗衣机*</th><td>0.5～1%</td><td>0.56～1.12g</td><td>30～40℃</td><td>清洁程序</td></tr>
+<tr><th scope="row">洗碗机*</th><td>0.5～1%</td><td>0.56～1.12g</td><td>按说明书</td><td>清洁程序</td></tr></tbody></table></div>
+
+</section>
+<section id="methods"><h2>分设备操作与洗衣机用量</h2>
+<details><summary>热水壶、电热水壶、烧水器</summary><p>推荐浓度：1～3%</p><p>每100g水：1.12～3.43g</p><p>每1000g水：11.2～34.3g</p><p>温度：40～60℃</p><p>操作方法：</p><p>将清水加热至约50℃，断电。</p><p>加入食品级柠檬酸并充分溶解。</p><p>浸泡15～30分钟，使溶液覆盖水垢。</p><p>倒掉溶液，用软海绵清理残余水垢。</p><p>用清水冲洗，再烧开清水并倒掉，重复2～3次。</p><p>部分厂商允许直接煮沸柠檬酸溶液，部分厂商则明确禁止，因此默认采用温水浸泡更稳妥。</p><p>特别注意： 铝制内胆、特殊涂层内胆、裸露铜质加热部件不宜采用通用柠檬酸配方。</p></details>
+<details><summary>花洒、淋浴喷头、水龙头</summary><p>推荐浓度：1～3%</p><p>每100g水：1.12～3.43g</p><p>每500g水：5.6～17.1g</p><p>温度：20～40℃</p><p>对于普通花洒喷孔，可以使用容器或塑料袋，使溶液接触喷孔部位，浸泡5～20分钟，再使用软毛刷刷洗，最后通水充分冲洗。</p><p>可拆卸的耐酸塑料滤网、起泡器等，顽固水垢可以尝试5%浓度。确认材质耐酸后，才考虑更高浓度。</p><p>特别注意镀铬、镀镍、枪灰色、哑光黑、玫瑰金、电镀及PVD涂层花洒。酸液可能进入镀层微孔，导致失光、变色、起皮。此类表面应先确认厂家允许使用，不能直接整夜浸泡。</p></details>
+<details><summary>即热饮水机、即热饮水器内部管路</summary><p>参考浓度：1～2%</p><p>每100g水：1.12～2.26g</p><p>每1000g水：11.2～22.6g</p><p>必须使用食品级原料及适用配方。</p><p>即热饮水器比普通水壶复杂，可能包含水泵、电磁阀、流量计、止回阀、加热体、硅胶管、密封圈等部件。</p><figure><figcaption>即热饮水器典型流路（各型号结构不同）</figcaption><ol class="flow"><li>水箱</li><li>泵与阀门</li><li>流量计</li><li>加热体</li><li>出水口</li></ol></figure><p>典型即热饮水器流路示意。分解脱落的水垢可能堵塞狭窄流道、阀门及流量计。</p><p>如果厂家允许柠檬酸除垢，使用专用除垢程序，按要求处理滤芯，再通过清水进行完整的管路冲洗。</p><p>特别注意事项：</p><p>不要将柠檬酸直接注入RO反渗透滤芯、活性炭滤芯或离子交换滤芯。</p><p>不要自行使用5～10%的高浓度溶液循环清洗。</p><p>不要让酸液在机内长期静置过夜。</p><p>不要擅自启动最高温度模式除垢。</p><p>如果已经出现明显出水量下降、加热异常，应优先检查堵塞，严重时需要拆机维护。</p></details>
+<details><summary>波轮洗衣机</summary><p>参考浓度：0.2～0.5%</p><p>每100g水：0.22～0.56g</p><p>每1L水：约2.2～5.6g</p><p>波轮洗衣机的实际用水量通常比滚筒洗衣机大，因此应根据除垢阶段的实际存水量计算，而不是根据洗衣机标称的8kg、10kg容量计算。</p><div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">实际存水量</th><th scope="col">0.2% 加粉</th><th scope="col">0.3% 加粉</th><th scope="col">0.5% 加粉</th></tr></thead><tbody>
+<tr><th scope="row">10 L</th><td>22 g</td><td>33 g</td><td>56 g</td></tr>
+<tr><th scope="row">20 L</th><td>44 g</td><td>67 g</td><td>111 g</td></tr>
+<tr><th scope="row">30 L</th><td>66 g</td><td>100 g</td><td>167 g</td></tr>
+<tr><th scope="row">40 L</th><td>89 g</td><td>133 g</td><td>222 g</td></tr>
+<tr><th scope="row">50 L</th><td>111 g</td><td>166 g</td><td>278 g</td></tr>
+<tr><th scope="row">60 L</th><td>133 g</td><td>200 g</td><td>333 g</td></tr></tbody></table></div>
+<p>以厂家允许酸性除垢、实际存水40L的波轮洗衣机为例，0.2～0.3%浓度需要约89～133g粉末。</p><p>清洁时应空桶运行，提前将粉末完全溶解，按允许的清洁程序运行，之后再用清水漂洗。</p><p>波轮底部、传动轴、轴承密封结构和外桶材质不一定耐酸，不建议进行高浓度长时间浸泡。</p></details>
+<details><summary>滚筒洗衣机</summary><p>参考浓度：0.5～1%</p><p>每100g水：0.56～1.12g</p><p>每1L水：约5.6～11.2g</p><div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">实际存水量</th><th scope="col">0.5% 加粉</th><th scope="col">0.8% 加粉</th><th scope="col">1% 加粉</th></tr></thead><tbody>
+<tr><th scope="row">5 L</th><td>28 g</td><td>45 g</td><td>56 g</td></tr>
+<tr><th scope="row">8 L</th><td>44 g</td><td>71 g</td><td>89 g</td></tr>
+<tr><th scope="row">10 L</th><td>56 g</td><td>89 g</td><td>112 g</td></tr>
+<tr><th scope="row">12 L</th><td>67 g</td><td>107 g</td><td>134 g</td></tr>
+<tr><th scope="row">15 L</th><td>83 g</td><td>134 g</td><td>168 g</td></tr>
+<tr><th scope="row">20 L</th><td>111 g</td><td>178 g</td><td>223 g</td></tr></tbody></table></div>
+<p>注意这里指的是主洗阶段实际参与混合的水量，不是整个洗涤程序的累计用水量。</p><p>很多滚筒洗衣机虽然内筒是不锈钢，但是内筒背面的支撑三脚架可能是铝合金。</p><p>重点风险：铝合金三脚架</p><p>高浓度、长时间、高温的酸性环境可能加剧铝合金腐蚀，以及对部分密封结构的损伤。</p><p>部分柠檬酸清洁产品建议每次洗衣机使用100～150g，但并不代表适用于所有洗衣机型号。</p><p>如果无法确定内桶支架、加热器等材质，建议使用厂家认可的洗衣机除垢剂。不建议自行采用90℃以上的高温酸洗。</p></details>
+<details><summary>淋浴玻璃、浴室瓷砖、不锈钢水槽</summary><p>普通玻璃与釉面瓷砖参考 2～5%；不锈钢水槽参考 1～3%。</p><p>玻璃、瓷砖每 100 g 水加 2.26～5.85 g，每 500 g 水加 11.3～29.2 g。</p><p>不锈钢水槽每 100 g 水加 1.12～3.43 g。</p><p>可以用喷壶喷在表面，或者使用湿布涂抹，使水垢保持湿润5～15分钟，再用软海绵擦拭并彻底冲洗。</p><p>顽固水垢可重复处理。不建议直接将浓度提高到20%。</p><p>有防污涂层的淋浴玻璃、玻璃边缘的金属框架、水泥基填缝剂等需要区别处理。酸液不要长时间停留在接缝处。</p></details>
+<details><summary>加湿器</summary><p>推荐浓度：1～3%</p><p>每100g水：1.12～3.43g</p><p>每500g水：5.6～17.1g</p><p>浸泡15～30分钟。</p><p>断电后清洁水箱和允许浸泡的部件，注意不要损伤超声波雾化片，不要让溶液进入电气部分。</p><p>加湿器会将水雾释放到空气中，建议同样使用食品级柠檬酸。禁止开机雾化柠檬酸溶液。 清洗后必须彻底冲洗。</p></details>
+<details><summary>马桶、陶瓷洁具</summary><p>推荐浓度：5～10%</p><p>每100g水：5.85～12.42g</p><p>每500g水：29.2～62.1g</p><p>适合普通耐酸釉面陶瓷上的碳酸盐水垢、部分尿垢。可以采用局部湿敷20～60分钟，再刷洗冲水。</p><p>马桶内部原有存水会进一步稀释酸液，需要考虑稀释后的实际浓度。</p><p>不要与洁厕灵、84消毒液、含氯马桶清洁块同时使用。</p></details>
+
+</section>
+<section id="materials"><h2>材质耐受性</h2>
+<div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">材质</th><th scope="col">适用性</th><th scope="col">注意事项</th></tr></thead><tbody>
+<tr><th scope="row">304不锈钢</th><td>较好</td><td>避免高温、高浓度长时间浸泡</td></tr>
+<tr><th scope="row">316不锈钢</th><td>较好</td><td>仍需控制接触时间</td></tr>
+<tr><th scope="row">普通玻璃</th><td>较好</td><td>特殊镀膜需确认</td></tr>
+<tr><th scope="row">釉面陶瓷</th><td>较好</td><td>避免接触水泥填缝</td></tr>
+<tr><th scope="row">PP塑料</th><td>较好</td><td>注意耐温上限</td></tr>
+<tr><th scope="row">PE、HDPE塑料</th><td>较好</td><td>适合配制和短期盛放</td></tr>
+<tr><th scope="row">PTFE</th><td>较好</td><td>通常耐酸</td></tr>
+<tr><th scope="row">硅胶</th><td>视配方而定</td><td>低浓度、短时间</td></tr>
+<tr><th scope="row">EPDM密封圈</th><td>视配方而定</td><td>注意温度和老化程度</td></tr>
+<tr><th scope="row">ABS塑料</th><td>谨慎</td><td>注意应力、温度与表面涂层</td></tr>
+<tr><th scope="row">镀铬、镀镍</th><td>谨慎</td><td>低浓度、短接触</td></tr>
+<tr><th scope="row">PVD及装饰涂层</th><td>谨慎</td><td>厂家允许后使用</td></tr>
+<tr><th scope="row">铜、黄铜</th><td>不建议自行浸泡</td><td>可能腐蚀、变色</td></tr>
+<tr><th scope="row">铝、铝合金</th><td>不建议</td><td>可能破坏氧化保护层</td></tr>
+<tr><th scope="row">铸铁、普通碳钢</th><td>不建议</td><td>易产生腐蚀及后续锈蚀</td></tr>
+<tr><th scope="row">镀锌金属</th><td>不建议</td><td>可能溶解锌层</td></tr>
+<tr><th scope="row">大理石</th><td>禁止</td><td>会直接侵蚀石材</td></tr>
+<tr><th scope="row">石灰石、洞石</th><td>禁止</td><td>会溶解碳酸钙</td></tr>
+<tr><th scope="row">水泥、混凝土</th><td>不建议</td><td>会侵蚀胶结材料</td></tr>
+<tr><th scope="row">水泥基美缝、填缝剂</th><td>不建议</td><td>可能粉化、脱落</td></tr>
+<tr><th scope="row">木材、木地板</th><td>不建议</td><td>可能损伤表面饰层</td></tr></tbody></table></div>
+<p>温度、浓度、时间、材料老化程度及制造工艺都会影响耐受性。</p>
+</section>
+<section id="reaction"><h2>水垢反应与理论用量</h2>
+<p>3 CaCO₃ + 2 C₆H₈O₇ → Ca₃(C₆H₅O₇)₂ + 3 CO₂ ↑ + 3 H₂O</p><div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">99% 一水物粉末</th><th scope="col">理论可反应的纯碳酸钙</th></tr></thead><tbody>
+<tr><th scope="row">1g</th><td>0.71g</td></tr>
+<tr><th scope="row">5g</th><td>3.54g</td></tr>
+<tr><th scope="row">10g</th><td>7.07g</td></tr>
+<tr><th scope="row">20g</th><td>14.15g</td></tr>
+<tr><th scope="row">50g</th><td>35.36g</td></tr>
+<tr><th scope="row">100g</th><td>70.73g</td></tr></tbody></table></div>
+<p>气泡来自二氧化碳。水垢成分、流动性、温度、浓度与接触时间共同影响实际效果。柠檬酸钙微溶，过度加热或旧液消耗后可能出现白色沉淀。</p>
+</section>
+<section id="temperature"><h2>温度与接触时间</h2>
+<div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">温度</th><th scope="col">参考场景</th><th scope="col">注意事项</th></tr></thead><tbody>
+<tr><th scope="row">15～25℃</th><td>金属表面、管路、敏感部件</td><td>反应较慢</td></tr>
+<tr><th scope="row">25～40℃</th><td>花洒、塑料、一般设备</td><td>常规推荐</td></tr>
+<tr><th scope="row">40～60℃</th><td>耐酸水壶、可拆卸耐酸部件</td><td>除垢较快</td></tr>
+<tr><th scope="row">60～80℃</th><td>厂家明确允许的设备</td><td>腐蚀、沉淀风险增加</td></tr>
+<tr><th scope="row">80～100℃</th><td>特定原厂除垢程序</td><td>不宜自行采用</td></tr></tbody></table></div>
+<p>避免同时提高浓度、温度和接触时间。对于允许酸洗的部件，可按说明更换新鲜溶液后再处理。</p>
+</section>
+<section id="mixing"><h2>清洁剂混用注意事项</h2>
+<div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">与柠檬酸混用的产品</th><th scope="col">后果</th></tr></thead><tbody>
+<tr><th scope="row">柠檬酸＋84消毒液</th><td>可能释放有毒氯气</td></tr>
+<tr><th scope="row">柠檬酸＋次氯酸钠漂白剂</th><td>可能释放有毒氯气</td></tr>
+<tr><th scope="row">柠檬酸＋含氯除霉剂</th><td>可能释放有毒氯气</td></tr>
+<tr><th scope="row">柠檬酸＋小苏打</th><td>酸碱中和，消耗除垢能力，产生气体</td></tr>
+<tr><th scope="row">柠檬酸＋碳酸钠</th><td>酸碱中和，大量释放二氧化碳</td></tr>
+<tr><th scope="row">柠檬酸＋氢氧化钠</th><td>中和放热，丧失除垢能力</td></tr>
+<tr><th scope="row">柠檬酸＋强酸洁厕剂</th><td>增加腐蚀和操作风险</td></tr>
+<tr><th scope="row">柠檬酸＋成分不明的清洁剂</th><td>不可预测的化学反应</td></tr></tbody></table></div>
+<p>含氯清洁剂残留须先用清水充分冲净。佩戴手套，避免粉尘和喷雾入眼，高浓度操作注意护目和通风。反应冒泡时保持容器敞开。</p>
+</section>
+<section id="common"><h2>家庭常备配方</h2>
+<div class="table-scroll" tabindex="0"><table><thead><tr><th scope="col">有效酸浓度</th><th scope="col">配方</th><th scope="col">适用场景</th><th scope="col">每 100 g 水加粉</th></tr></thead><tbody>
+<tr><th scope="row"><button type="button" data-percent="1">1%</button></th><td>日常维护液</td><td>轻微水垢、允许酸洗的敏感部件</td><td>1.12g</td></tr>
+<tr><th scope="row"><button type="button" data-percent="2">2%</button></th><td>温和除垢液</td><td>水壶、兼容管路、加湿器（食品级）</td><td>2.26g</td></tr>
+<tr><th scope="row"><button type="button" data-percent="3">3%</button></th><td>通用除垢液</td><td>花洒、玻璃、不锈钢、耐酸塑料</td><td>3.43g</td></tr>
+<tr><th scope="row"><button type="button" data-percent="5">5%</button></th><td>加强除垢液</td><td>耐酸可拆卸部件、明显水垢</td><td>5.85g</td></tr>
+<tr><th scope="row"><button type="button" data-percent="10">10%</button></th><td>重度除垢液</td><td>普通釉面陶瓷、局部顽固水垢</td><td>12.42g</td></tr></tbody></table></div>
+<p>使用清洁的玻璃、PP 或 HDPE 容器现用现配，标明浓度和不可饮用，远离儿童。15～20% 不作为家庭常规配方。</p>
+</section>
+<footer>混用清洁剂可能产生危险气体。 <a href="https://www.cdc.gov/hygiene/about/cleaning-and-disinfecting-with-bleach.html">CDC 漂白剂安全指南</a></footer>
+</main></body></html>

@@ -1,0 +1,102 @@
+:root {  font-family:system-ui,"PingFang SC",sans-serif; background:var(--paper); color:var(--ink); line-height:1.65 }
+* { box-sizing:border-box }
+body { margin:0 }
+.frame { width:min(66rem,calc(100% - 2.25rem)); margin:auto }
+header { border-bottom:1px solid var(--line) }
+.bar,nav { display:flex; gap:1.2rem; align-items:center; flex-wrap:wrap }
+.bar { justify-content:space-between; padding:1.15rem 0 }
+nav a { font-size:.95rem; text-decoration:none }
+a { color:var(--ink); text-underline-offset:.2em }
+.intro { padding:clamp(2rem,5vw,4rem) 0 1.3rem }
+h1,h2,h3,p { margin:0 }
+h1 { font:750 clamp(2.3rem,6.5vw,4.4rem)/1.18 "Songti SC","Noto Serif CJK SC",serif; letter-spacing:-.04em }
+.intro p,.lead,.note { color:var(--secondary); margin-top:.65rem }
+h2 { font-size:1.55rem }
+aside { display:flex; align-items:baseline; gap:.9rem; background:var(--paper); color:var(--secondary); padding:.8rem 1rem; border-left:4px solid var(--ink) }
+aside b { white-space:nowrap }
+section { margin:2.4rem 0; scroll-margin-top:1rem }
+.panel { display:grid; grid-template-columns:1.4fr 1fr; background:var(--paper); border:1px solid var(--line); border-radius:1rem; overflow:hidden; margin-top:1.4rem }
+.inputs,.readout { padding:clamp(1.25rem,3.3vw,2.4rem); min-width:0 }
+.pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem }
+label { display:block; margin:.9rem 0 .35rem; font-weight:600; font-size:.95rem }
+input,select { width:100%; min-width:0; font:inherit; color:inherit; background:var(--paper); border:1px solid var(--control-line); border-radius:.5rem; height:2.8rem; padding:0 .6rem }
+.compound { display:flex }
+.compound input { border-radius:.5rem 0 0 .5rem }
+.compound select { width:4.5rem; flex-shrink:0; border-radius:0 .5rem .5rem 0; border-left:0 }
+.readout { display:flex; flex-direction:column; justify-content:center; background:var(--paper); color:var(--ink); border-left:1px solid var(--line) }
+.readout h3 { color:var(--secondary); font-size:1rem }
+output { color:var(--ink); font-size:clamp(2.7rem,5vw,4rem); line-height:1.45; font-variant-numeric:tabular-nums; overflow-wrap:anywhere }
+.ruler { height:1rem; margin-top:2.2rem; border-bottom:1px solid var(--control-line); background:repeating-linear-gradient(90deg,var(--control-line) 0 1px,transparent 1px 10%) bottom / 100% 100% no-repeat,repeating-linear-gradient(90deg,var(--control-line) 0 1px,transparent 1px 2%) bottom / 100% 35% no-repeat }
+.note { font-size:.92rem }
+table { width:100%; border-collapse:collapse; margin-top:1rem; background:var(--paper); border-block:1px solid var(--line) }
+th,td { text-align:left; padding:.85rem 1rem; vertical-align:top; border-bottom:1px solid var(--line) }
+thead { background:var(--paper) }
+#devices th:first-child { width:18% }
+#devices th:nth-child(2) { width:26% }
+td a { white-space:normal }
+details { margin-top:1rem; padding:.8rem 1rem; background:var(--paper);border-top:1px solid var(--line) }
+summary { cursor:pointer; font-weight:650 }
+details p { margin-top:.6rem }
+footer { padding:1.2rem 0 2rem; border-top:1px solid var(--line); font-size:.95rem }
+:focus-visible { outline:3px solid var(--ink); outline-offset:2px }
+@media(max-width:660px) {
+ .panel { grid-template-columns:1fr }
+ .ruler { margin-top:1rem }
+ #devices table,#devices tbody,#devices tr,#devices tbody th,#devices td { display:block; width:auto }
+ #devices thead { position:absolute; clip-path:inset(50%); width:1px; height:1px; overflow:hidden }
+ #devices tr { padding:.8rem; border-bottom:1px solid var(--line) }
+ #devices tbody th,#devices td { padding:.15rem 0; border:0 }
+ #devices td:nth-child(2)::before { content:"每 100 g 水 · "; color:var(--secondary) }
+ .bar { gap:.5rem }
+ nav { gap:.7rem }
+ th,td { padding:.65rem }
+}
+@media(max-width:400px) { .pair { grid-template-columns:1fr; gap:0 } aside { display:block } aside b { margin-right:.5rem } }
+
+.atlas { display:grid; grid-template-columns:repeat(auto-fit,minmax(7.6rem,1fr)); gap:.5rem; margin:1rem 0 2rem }
+.device { display:flex; flex-direction:column; align-items:center; padding:.7rem .25rem; border:1px solid var(--line); border-radius:.45rem; text-decoration:none }
+.device:hover,.device:focus-visible { border-color:var(--ink) }
+.device svg { width:4.5rem; height:4.5rem; fill:none; stroke:var(--secondary); stroke-width:2; stroke-linecap:round; stroke-linejoin:round }
+.device .part { stroke:var(--ink); stroke-width:3 }
+.device strong { color:var(--ink) }
+.device small { color:var(--secondary); font-size:.875rem }
+button { cursor:pointer; font:inherit; background:var(--paper); color:var(--ink); border:0; padding:.15rem 0; text-decoration:underline; text-underline-offset:.2em }
+tr:target { outline:2px solid var(--ink); outline-offset:-2px }
+@media(max-width:660px){.readout{border-left:0;border-top:1px solid var(--line)} #scope th,#scope td{padding:.5rem} #scope th:first-child{width:23%}}
+
+/* Keep the long reference tables legible on small screens. */
+.table-scroll { overflow-x:auto }
+.table-scroll th,.table-scroll td { min-width:5.2em }
+.table-scroll th { font-weight:600 }
+section h2 { margin-bottom:.6rem }
+section p + p { margin-top:.55rem }
+.band { display:grid; grid-template-columns:minmax(5.3rem,13%) 1fr; align-items:center; gap:.8rem; margin:.65rem 0 }
+.band strong { font-variant-numeric:tabular-nums }
+.band > div { color:var(--secondary) }
+.track { height:.57rem; background:var(--soft); border-radius:1rem; overflow:hidden; margin-bottom:.15rem }
+.track i { display:block; height:100%; border-radius:inherit }
+.mix { border:1px solid var(--line); border-radius:1rem; padding:clamp(1rem,3vw,2rem) }
+.mix .inputs { padding:0 }
+.mix fieldset { border:0; padding:0; margin:.9rem 0 0; min-width:0 }
+.mix legend { font-weight:600; font-size:.95rem; margin-bottom:.35rem }
+.choices,.presets,.ticks,.target { display:flex; align-items:center; gap:1rem }
+.choices label { margin:0; padding:.45rem 0; font-weight:400; display:flex; align-items:center; gap:.35rem }
+.choices input { width:1.1rem; height:1.1rem; accent-color:var(--ink) }
+.target { justify-content:space-between; margin-top:1rem }
+.target label { margin:0 }
+.target input { width:6rem }
+#slider { padding:0; border:0; height:2rem; accent-color:var(--ink) }
+.ticks { justify-content:space-between; font-size:.88rem; color:var(--secondary) }
+.presets { flex-wrap:wrap; gap:.4rem; margin-top:.7rem }
+.presets button { min-width:3rem; padding:.25rem .6rem; border:1px solid var(--line); border-radius:2rem; text-decoration:none; color:inherit }
+.presets button[aria-pressed="true"] { background:var(--soft); border-color:var(--control-line) }
+.answer { border-top:1px solid var(--line); margin-top:1.25rem; padding-top:1rem; font-variant-numeric:tabular-nums }
+.answer .pair { margin:.6rem 0 }
+.answer p,.answer .pair { color:var(--secondary) }
+.answer b { color:var(--ink) }
+.flow { display:flex; align-items:center; flex-wrap:wrap; gap:.4rem; padding:0; list-style:none }
+.flow li + li::before { content:"→"; margin-right:.4rem }
+figure { margin:1rem 0; padding:1rem; border:1px solid var(--line) }
+@media(max-width:660px){#devices td:nth-child(2)::before{content:"每 100 mL 水 · "}}
+.presets[hidden] { display:none }
+#stock-fields { border-block:1px solid var(--line); padding:.45rem 0 1rem }
